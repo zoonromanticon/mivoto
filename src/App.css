@@ -1,0 +1,22 @@
+.btn-margin {
+  margin: 7px 3px;
+}
+
+.question {
+  background-color: rgba(0,0,0,0.1);
+  padding: 1%;
+  border-style: dashed dashed double double;
+  border-color: white;
+  border-radius: .5% !important;
+}
+
+.submit {
+  margin: 3%;
+  width: 100%;
+  margin-left: auto;
+    margin-right: auto;
+}
+
+.container {
+  padding-bottom: 1%;
+}
