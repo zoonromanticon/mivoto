@@ -12,7 +12,9 @@
     "react-bootstrap": "^0.31.0",
     "react-dom": "^15.5.4",
     "react-router": "^4.1.1",
-    "react-router-dom": "^4.1.1"
+    "react-router-dom": "^4.1.1",
+    "react-share": "^2.1.1",
+    "react-stars": "^2.2.5"
   },
   "scripts": {
     "start": "react-scripts start",

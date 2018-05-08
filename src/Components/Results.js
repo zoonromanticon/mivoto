@@ -1,5 +1,6 @@
 import React from 'react';
 import {Candidate} from './Candidate';
+import {SocialShare} from './SocialShare';
 // import { } from 'react-bootstrap';
 
 const candidatesInfo = [
@@ -28,7 +29,7 @@ const candidatesInfo = [
         'https://pbs.twimg.com/profile_images/991300977977430017/2JkiB-Lw_400x400.jpg',
     ],
     [
-        'Jaime Rodríguez',
+        'Jaime Rodríguez "El Bronco"',
         'INDEPENDIENTE',
         'X cosa',
         'https://pbs.twimg.com/profile_images/956363270000017408/OA0M9pWj_400x400.jpg'
@@ -45,10 +46,9 @@ export class Results extends React.Component {
     
     render () {
         return (
-        <div>
-             {candidatesInfo.map((candidate, index) => <Candidate id={index} key={index} name={candidate[0]} party={candidate[1]} common={candidate[2]} pic={candidate[3]}/>
-                )}
-
+        <div className="question">
+            {candidatesInfo.map((candidate, index) => <Candidate id={index} key={index} name={candidate[0]} party={candidate[1]} common={candidate[2]} pic={candidate[3]}/>)}
+            <SocialShare/>
         </div>
         )
     }

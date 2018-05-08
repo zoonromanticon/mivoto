@@ -1,5 +1,5 @@
 import React from 'react';
-// import {Question} from './Question';
+import {Question} from './Question';
 import {Results} from './Results';
 import {FormQuestions} from './FormQuestions';
 import { Button } from 'react-bootstrap';
@@ -34,7 +34,7 @@ const algorithmData = {
 			
 }
 
-// var question_index = 0
+var questionIndex = 0
 
 export class PoliticalForm extends React.Component {
     constructor(props) {
@@ -111,8 +111,24 @@ export class PoliticalForm extends React.Component {
                 <h3>Elige la opción que más represente tu punto de vista para cada pregunta:</h3>
                 <br/>
                 <br/>
-                <FormQuestions data={algorithmData}  handlerFunction={this.addAnswer}/>
-                
+                {Object.keys(algorithmData).map((category, index) =>
+                    (   
+                        <div>
+                        <h1>{category}</h1>
+                        {algorithmData[category]['questions'].map((question, index) => 
+                            (   <div>
+                                    <Question id={questionIndex} key={questionIndex} title={question} handler={this.addAnswer}/>
+                                    <br/>
+                                    {questionIndex++ && false}
+                                </div>
+                            )
+                        )}
+                        </div>   
+                    )
+                )}
+                {/* Next line is important to reset the counter because the component refreshes each time the user chooses an answer. BTW, find a better solution */}
+                <p style={{visibility: 'hidden'}}>{questionIndex=0}</p>
+
                 <Button className="submit grow" onClick={this.onSubmit} bsSize="large" bsStyle="primary">Generar Resultados</Button>
                 <br/>
                 <br/>

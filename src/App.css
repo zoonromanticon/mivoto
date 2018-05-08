@@ -5,13 +5,13 @@
 .question {
   background-color: rgba(0,0,0,0.1);
   padding: 1%;
-  border-style: dashed dashed double double;
+  border-style: none none double double;
   border-color: white;
   border-radius: .5% !important;
 }
 
 .submit {
-  margin: 3%;
+  margin-top: 1%;
   width: 100%;
   margin-left: auto;
     margin-right: auto;
@@ -19,4 +19,43 @@
 
 .container {
   padding-bottom: 1%;
+}
+
+.form {
+  text-align: center;
+}
+
+.description {
+  text-align: center;
+}
+
+.shareButton {
+  cursor: pointer;
+}
+
+.shareButton:hover:not(:active) {
+  opacity: 0.75;
+}
+
+.shareButtonsContainer {
+  vertical-align: top;
+  display: inline-block;
+  margin-right: 30px;
+  text-align: center;
+}
+
+.picture {
+  border-radius: 3%;
+}
+
+.grow {
+	-webkit-transform: scale(1);
+	transform: scale(1);
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+.grow:hover {
+  overflow: hidden;
+	-webkit-transform: scale(1.015);
+	transform: scale(1.035);
 }
