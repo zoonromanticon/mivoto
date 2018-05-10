@@ -7,10 +7,10 @@ class Home extends Component {
   }
   render() {
     const { isAuthenticated } = this.props.auth;
-    console.log(this.props);
+    // console.log(this.props);
     //PlwO340192834
     return (
-      <div className="container">
+      <div style={{padding:'0%'}} className="container">
         {
           isAuthenticated() && (
               <PoliticalForm/>

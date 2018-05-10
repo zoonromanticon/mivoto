@@ -1,40 +1,6 @@
 import React from 'react';
 import {Candidate} from './Candidate';
 import {SocialShare} from './SocialShare';
-// import { } from 'react-bootstrap';
-
-const candidatesInfo = [
-    [
-        'Andrés Manuel López Obrador',
-        'JUNTOS HAREMOS HISTORIA (MORENA-PT-PES)',
-        'X cosa',
-        'https://pbs.twimg.com/profile_images/941387100095635456/CmULmyyk_400x400.jpg',
-    ],
-    [
-        'Ricardo Anaya',
-        'POR MEXICO, AL FRENTE (PAN-PRD-MC)',
-        'X cosa',
-        'https://pbs.twimg.com/profile_images/696899956712435712/IPsP1eSj_400x400.jpg',
-    ],
-    [
-        'José Antonio Meade',
-        'TODOS POR MÉXICO (PRI-PVEM-PANAL)',
-        'X cosa',
-        'https://pbs.twimg.com/profile_images/979597895111294976/CAsjaezd_400x400.jpg',
-    ],
-    [
-        'Margarita Zavala',
-        'INDEPENDIENTE',
-        'X cosa',
-        'https://pbs.twimg.com/profile_images/991300977977430017/2JkiB-Lw_400x400.jpg',
-    ],
-    [
-        'Jaime Rodríguez "El Bronco"',
-        'INDEPENDIENTE',
-        'X cosa',
-        'https://pbs.twimg.com/profile_images/956363270000017408/OA0M9pWj_400x400.jpg'
-    ]
-]
 
 export class Results extends React.Component {
     constructor(props) {
@@ -43,12 +9,16 @@ export class Results extends React.Component {
             tst: false,
         };
       }
+
+    componentWillMount() {
+        console.log(this.props.vAnalysis, this.props.rux)
+    }
     
     render () {
         return (
         <div className="question">
-            {candidatesInfo.map((candidate, index) => <Candidate id={index} key={index} name={candidate[0]} party={candidate[1]} common={candidate[2]} pic={candidate[3]}/>)}
-            <SocialShare/>
+            {this.props.vAnalysis.map((candidate, index) => <Candidate id={index} key={index} rux={this.props.rux} affinity={candidate[1][0]} name={candidate[1][1]} party={candidate[1][2]} common={candidate[1][3]} pic={candidate[1][4]}/>)}
+            <SocialShare answers={this.props.answers}/>
         </div>
         )
     }

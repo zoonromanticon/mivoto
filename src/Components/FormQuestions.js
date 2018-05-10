@@ -9,11 +9,11 @@ export class FormQuestions extends React.Component {
             <div>
                 {Object.keys(this.props.data).map((category, index) =>
                     (   
-                        <div>
+                        <div key={index}>
                         <h1>{category}</h1>
                         {this.props.data[category]['questions'].map((question, index) => 
-                            (   <div>
-                                    <Question id={questionIndex} key={questionIndex} title={question} handler={this.props.handlerFunction}/>
+                            (   <div key={questionIndex}>
+                                    <Question id={questionIndex} key={questionIndex} title={question} answerHandlerFunction={this.props.answerHandlerFunction} ratingHandlerFunction={this.props.ratingHandlerFunction} rating={this.props.rating}/>
                                     <br/>
                                     {questionIndex++ && false}
                                 </div>

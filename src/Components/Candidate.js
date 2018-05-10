@@ -22,14 +22,14 @@ export class Candidate extends React.Component {
                 </Col>
                 <Col md={1} >
                     <div style={{height: 'auto', width: 'auto' }}>
-                        <h1>100%</h1>
+                        <h1>{Math.floor( (this.props.affinity+this.props.rux) * 100) / 100}</h1>
                     </div>
                 </Col>
                 <Col md={6}>
                     <div className="description" style={{height: 'auto', width: 'auto' }}>
                         <h4>{this.props.name}</h4>
                         <h5>{this.props.party}</h5>
-                        <h6>TU MAYOR AFINIDAD CON ÉL ES EN: {this.props.common}</h6>
+                        <h5>Tu mayor afinidad es: {this.props.common}</h5>
                     </div>
                 </Col>
                 <Col md={2}>

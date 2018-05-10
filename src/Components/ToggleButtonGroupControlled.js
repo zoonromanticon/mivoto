@@ -14,7 +14,7 @@ export class ToggleButtonGroupControlled extends React.Component {
     }
   
     handleChange(e) {
-      this.props.handler(e, this.props.id);
+      this.props.answerHandlerFunction(e, this.props.id);
       this.setState({ value: e });
     }
   
@@ -32,7 +32,7 @@ export class ToggleButtonGroupControlled extends React.Component {
           <ToggleButton className="grow" bsSize="large" style={{backgroundColor:'darkcyan', color:'white', fontFamily:'monospace', fontSize:'180%'}} bsStyle="default" value={3}> Neutral</ToggleButton>
           <ToggleButton className="grow" bsSize="large" style={{fontFamily:'monospace', fontSize:'180%'}} bsStyle="success" value={4}> En desacuerdo</ToggleButton>
           <ToggleButton className="grow" bsSize="large" style={{fontFamily:'monospace', fontSize:'180%'}} bsStyle="danger" value={5}> Totalmente en desacuerdo</ToggleButton>
-          <h3>{this.state.value}</h3>
+          {/* <h3>{this.state.value}</h3> */}
         </ToggleButtonGroup>
       );
     }

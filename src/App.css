@@ -59,3 +59,7 @@
 	-webkit-transform: scale(1.015);
 	transform: scale(1.035);
 }
+
+.ratingContainer {
+  background-color: 'gray';
+}

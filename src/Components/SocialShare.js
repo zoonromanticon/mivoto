@@ -9,7 +9,7 @@ import {
     WhatsappIcon,
   } from 'react-share';
 
-const shareUrl = "mivoto.io/results"
+const shareUrl = "mivoto.io/results?answers="
 const title = "Share"
 
 export class SocialShare extends React.Component {
@@ -22,7 +22,7 @@ export class SocialShare extends React.Component {
                 <Row className="shareButtonsContainer">
                     <Col md={4} >
                         <FacebookShareButton
-                            url={shareUrl}
+                            url={shareUrl+this.props.answers}
                             quote={title}
                             className="shareButton grow">
                             <FacebookIcon
@@ -32,7 +32,7 @@ export class SocialShare extends React.Component {
                     </Col>
                     <Col md={4} >
                         <TwitterShareButton
-                            url={shareUrl}
+                            url={shareUrl+this.props.answers}
                             quote={title}
                             className="shareButton grow">
                             <TwitterIcon
@@ -42,7 +42,7 @@ export class SocialShare extends React.Component {
                     </Col>
                     <Col md={4} >
                         <WhatsappShareButton
-                            url={shareUrl}
+                            url={shareUrl+this.props.answers}
                             quote={title}
                             className="shareButton grow">
                             <WhatsappIcon
