@@ -11,7 +11,8 @@ export class Candidate extends React.Component {
     
     render () {
         return (
-            <Grid>
+            <Grid className="growDark">
+            <br/>
             <Row className="show-grid">
                 <Col md={3} >
                     <div style={{height: 'auto', width: 'auto' }}>
@@ -22,7 +23,7 @@ export class Candidate extends React.Component {
                 </Col>
                 <Col md={1} >
                     <div style={{height: 'auto', width: 'auto' }}>
-                        <h1>{Math.floor( (this.props.affinity+this.props.rux) * 100) / 100}</h1>
+                        <h1>{Math.floor( (this.props.affinity+this.props.rux) * 100) / 100}%</h1>
                     </div>
                 </Col>
                 <Col md={6}>
@@ -36,6 +37,7 @@ export class Candidate extends React.Component {
                     ELECCIÓN
                 </Col>
             </Row>
+            <br/>
             </Grid>
         )
     }

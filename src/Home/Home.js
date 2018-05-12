@@ -14,11 +14,12 @@ class Home extends Component {
         {
           isAuthenticated() && (
               <PoliticalForm/>
-            )
+          )
         }
         {
           !isAuthenticated() && (
-              <h4>
+            <div style={{textAlign:'center'}}>
+              <h3>
                 ¡No has iniciado sesión! Por favor,{' '}
                 <a
                   style={{ cursor: 'pointer', textDecoration: 'underline' }}
@@ -27,8 +28,9 @@ class Home extends Component {
                   Inicia sesión
                 </a>
                 {' '}para continuar.
-              </h4>
-            )
+              </h3>
+            </div>
+          )
         }
       </div>
     );

@@ -10,19 +10,19 @@ export class FormQuestions extends React.Component {
                 {Object.keys(this.props.data).map((category, index) =>
                     (   
                         <div key={index}>
-                        <h1>{category}</h1>
+                        <h4 style={{textAlign:'left',  width:'99%', fontFamily:'monospace', fontWeight:'bold'}}>{category}</h4>
                         {this.props.data[category]['questions'].map((question, index) => 
                             (   <div key={questionIndex}>
-                                    <Question id={questionIndex} key={questionIndex} title={question} answerHandlerFunction={this.props.answerHandlerFunction} ratingHandlerFunction={this.props.ratingHandlerFunction} rating={this.props.rating}/>
+                                    <Question id={questionIndex} key={questionIndex} title={question} answerHandlerFunction={this.props.answerHandlerFunction} ratingHandlerFunction={this.props.ratingHandlerFunction} ratings={this.props.ratings}/>
                                     <br/>
-                                    {questionIndex++ && false}
+                                    <p style={{visibility: 'hidden'}}>{questionIndex++ && false}</p>
                                 </div>
                             )
                         )}
                         </div>   
                     )
                 )}
-                {/* Next line is important to reset the counter because the component refreshes each time the user chooses an answer. BTW, find a better solution */}
+                {/* Next line is very important to reset the counter because the component refreshes each time the user chooses an answer. BTW, find a better solution */}
                 <p style={{visibility: 'hidden'}}>{questionIndex=0}</p>
             </div>
             )
