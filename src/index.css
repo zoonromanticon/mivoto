@@ -1,5 +1,5 @@
 body {
-  background-color: rgb(18, 104, 185);
+  background-color: rgba(0, 0, 0, 0) !important;
   margin: 0;
   padding: 0;
   font-family: sans-serif;

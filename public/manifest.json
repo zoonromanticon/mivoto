@@ -1,0 +1,24 @@
+{
+    "browser_action": {
+        "default_icon": {
+          "19": "button/geo-19.png",
+          "38": "button/geo-38.png"
+        },
+        "default_title": "Mi Voto...",
+        "default_popup": "popup/geo.html"
+      },
+    "short_name": "Mi Voto..",
+    "name": "Mi Voto.",
+    "icons": [
+      {
+        "src": "favicon.ico",
+        "sizes": "64x64 32x32 24x24 16x16",
+        "type": "image/x-icon"
+      }
+    ],
+    "display": "standalone",
+    "theme_color": "#000000",
+    "background_color": "#ffffff",
+    "description" : "DGFGDFGSSDFSD"
+  }
+  

@@ -18,7 +18,8 @@
 }
 
 .container {
-  padding-bottom: 1%;
+  background-color: rgba(0,0,0,0);
+  padding-bottom: 0%;
 }
 
 .form {
@@ -87,4 +88,10 @@
   text-align:'left' !important;
   width:'99%';
   font-family:'monospace';
+}
+
+.col {
+  display: 'flex !important'; 
+  align-items: 'center !important';
+  background-color: 'blue !important';
 }

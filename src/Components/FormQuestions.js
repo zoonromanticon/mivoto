@@ -1,5 +1,6 @@
 import React from 'react';
 import {Question} from './Question';
+import {AffinityQuestion} from './AffinityQuestion';
 
 var questionIndex = 0
 
@@ -24,6 +25,8 @@ export class FormQuestions extends React.Component {
                 )}
                 {/* Next line is very important to reset the counter because the component refreshes each time the user chooses an answer. BTW, find a better solution */}
                 <p style={{visibility: 'hidden'}}>{questionIndex=0}</p>
+                {/* The last question is different so another component is used */}
+                <AffinityQuestion affinityQuestionHandlerFunction={this.props.affinityQuestionHandlerFunction}/>
             </div>
             )
     }

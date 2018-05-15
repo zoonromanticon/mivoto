@@ -10,7 +10,7 @@ class Home extends Component {
     // console.log(this.props);
     //PlwO340192834
     return (
-      <div style={{padding:'0%'}} className="container">
+      <div style={{padding:'0%',}} className="container">
         {
           isAuthenticated() && (
               <PoliticalForm/>
@@ -18,7 +18,7 @@ class Home extends Component {
         }
         {
           !isAuthenticated() && (
-            <div style={{textAlign:'center'}}>
+            <div>
               <h3>
                 ¡No has iniciado sesión! Por favor,{' '}
                 <a

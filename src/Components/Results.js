@@ -11,7 +11,7 @@ export class Results extends React.Component {
       }
 
     componentWillMount() {
-        console.log("8v Analysis results:",this.props.vAnalysis, this.props.rux)
+        console.log("8v Analysis results: ",this.props.vAnalysis, "Total Rux: ", this.props.rux)
     }
     
     render () {
@@ -19,8 +19,8 @@ export class Results extends React.Component {
         <div className="question">
             <br/>
             <br/>
-            {this.props.vAnalysis.map((candidate, index) => <Candidate id={index} key={index} rux={this.props.rux} affinity={candidate[1][0]} name={candidate[1][1]} party={candidate[1][2]} common={candidate[1][3]} pic={candidate[1][4]}/>)}
-            <SocialShare answers={this.props.answers}/>
+            {this.props.vAnalysis.map((candidate, index) => <Candidate id={index} key={index} rux={this.props.rux} affinity={candidate[1][0]} name={candidate[1][1]} party={candidate[1][2]} categoryOfMaxAffinity={candidate[1][3]} categoryOfMinAffinity={candidate[1][4]} pic={candidate[1][5]}/>)}
+            <SocialShare vAnalysis={this.props.vAnalysis} rux={this.props.rux}/>
         </div>
         )
     }

@@ -14,7 +14,7 @@ export class Candidate extends React.Component {
             <Grid className="growDark">
             <br/>
             <Row className="show-grid">
-                <Col md={3} >
+                <Col md={4} >
                     <div style={{height: 'auto', width: 'auto' }}>
                         <ResponsiveEmbed a4by3 className="picture grow">
                             <embed type="image/jpg" src={this.props.pic} />
@@ -22,15 +22,20 @@ export class Candidate extends React.Component {
                     </div>
                 </Col>
                 <Col md={1} >
-                    <div style={{height: 'auto', width: 'auto' }}>
+                    <div style={{
+                      display: 'flex !important',
+                      alignItems: 'center !important',
+                      backgroundColor: 'blue !important',
+                }}>
                         <h1>{Math.floor( (this.props.affinity+this.props.rux) * 100) / 100}%</h1>
                     </div>
                 </Col>
-                <Col md={6}>
+                <Col md={5}>
                     <div className="description" style={{height: 'auto', width: 'auto' }}>
                         <h4>{this.props.name}</h4>
                         <h5>{this.props.party}</h5>
-                        <h5>Tu mayor afinidad es: {this.props.common}</h5>
+                        <h5>Tu mayor afinidad es: </h5><h5 style={{fontWeight: 'bold'}}>{this.props.categoryOfMaxAffinity}</h5>
+                        <h5>Tu menor afinidad es: </h5><h5 style={{fontWeight: 'bold'}}>{this.props.categoryOfMinAffinity}</h5>
                     </div>
                 </Col>
                 <Col md={2}>
