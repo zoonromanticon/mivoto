@@ -5,6 +5,7 @@ import Home from './Home/Home';
 import Callback from './Callback/Callback';
 import Auth from './Auth/Auth';
 import history from './history';
+import { Footer } from './Components/Footer'
 
 const auth = new Auth();
 
@@ -18,7 +19,8 @@ export const makeMainRoutes = () => {
   return (
       <Router history={history}>
         <div>
-          <Route path="/" render={(props) => <App auth={auth} {...props} />} />
+          {/* <Route path="/" render={(props) => <div style={{backgroundColor:'rgba(59,180,199,.3)'}}><App auth={auth} {...props} /><Home auth={auth} {...props} /></div>} /> */}
+          <Route path="/" render={(props) => <div ><App auth={auth} {...props} /><Home auth={auth} {...props} /><br/><Footer/></div>} />
           <Route path="/home" render={(props) => <Home auth={auth} {...props} />} />
           <Route path="/callback" render={(props) => {
             handleAuthentication(props);

@@ -5,7 +5,7 @@ import React from 'react';
 import { Get } from 'react-axios';
 import {Results} from './Results';
 import {FormQuestions} from './FormQuestions';
-import { Navbar, Button } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 const Loading = require('react-loading-animation');
 
 const algorithmData = {
@@ -179,8 +179,9 @@ export class PoliticalForm extends React.Component {
         e.preventDefault();
         // If answers contains no 0s, the compute the results.
         // Else, show the error message
-        if (this.state.answers.find(answer => answer === 0) === undefined && this.state.favoriteCandidate!==0) {
+        if (this.state.answers.find(answer => answer === 0) === undefined && this.state.favoriteCandidate!==null) {
             this.computeResults();
+            console.log(this.props);
         } else {
             this.setState({showErrorMessage: true, readyToComputeResults: false});
         }
@@ -221,7 +222,8 @@ export class PoliticalForm extends React.Component {
                 <br/>
                 {/* FormQuestions renders all the questions with their corresponding possible answers and ratings */}
                 <FormQuestions data={algorithmData}  answerHandlerFunction={this.addAnswer} ratingHandlerFunction={this.addRating} affinityQuestionHandlerFunction={this.changeFavoriteCandidate} ratings={this.state.ratings}/>
-
+                <br/>
+                <br/>
                 {/* To be pressed when every question has a correspoding answer */}
                 <Button className="submit grow" onClick={this.onSubmit} bsSize="large" bsStyle="primary">Generar Resultados</Button>
                 <br/>
@@ -259,14 +261,10 @@ export class PoliticalForm extends React.Component {
                 </Get>
                 
                 {/* A very useful button when testing the app. Press to fill up the answers vector */}
-                {/* <Button className="submit grow" onClick={this.fillVector} bsSize="large" bsStyle="danger">Trampa</Button> */}
+                <Button className="submit grow" onClick={this.fillVector} bsSize="large" bsStyle="danger">Trampa</Button>
 
                 {/* Gee. No time for finding the footer! Come back here when you have enough time!!! */}
-                <Navbar style={{color:'white', padding:'0% !important'}} inverse >
-                <Navbar.Header>
-                    mivoto.io versión alfa 1.0.2 ‘MVP release’. mivoto.io no tiene ninguna afiliación política y está desarrollado por ciudadanos mexicanos y por capital privado. Queremos conocer cualquier feedback o aclaración, escríbenos a: mivoto.feedback@gmail.com
-                </Navbar.Header>
-                </Navbar>
+                {/* <Footer/> */}
                 </div>
         )
     }

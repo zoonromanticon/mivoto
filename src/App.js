@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Navbar, Button } from 'react-bootstrap';
 import './App.css';
+import {LandingPage} from './Components/LandingPage';
+import ReactTooltip from 'react-tooltip'
 
 class App extends Component {
   goTo(route) {
@@ -25,14 +27,14 @@ class App extends Component {
             <Navbar.Brand>
               <a href="#">mivoto.io</a>
             </Navbar.Brand>
-            <Button
+            {/* <Button
               bsStyle="success"
               className="btn btn-outline-success btn-margin"
-              onClick={this.goTo.bind(this, 'home')}
+              onClick={this.goTo.bind(this, '/')}
             >
               
               Formulario
-            </Button>
+            </Button> */}
             {
               !isAuthenticated() && (
                   <Button
@@ -57,9 +59,26 @@ class App extends Component {
                   </Button>
                 )
             }
-          </Navbar.Header>
+
+            <Button
+              data-tip data-for='global'
+              bsStyle="primary"
+              className="btn btn-outline-success btn-margin">
+              Versiones
+            </Button> 
+            <ReactTooltip className="tooltip" id='global' place='bottom' type="warning">
+              {/* <p>Versiones</p> */}
+              <ul>
+                <li>Versión alpha 0.1: “MVP Release”. 09/05/18. Cuestionario funcional, resultados porcentuales y compartir en redes sociales</li>
+                <li>Update alpha 0.2: 13/05/18. Mejora a errores en el cuestionario, se corrigió un problema que no permitía registrarse a algunos usuarios</li>
+                <li>Update alpha 0.3: 17/05/18. Se añadió landing page, se añadió resultado de mayor y menor afinidad por candidato</li>
+              </ul>
+            </ReactTooltip>
+            </Navbar.Header>
+
         </Navbar>
-        DSFKDSKFDSFKSDK
+
+        {!isAuthenticated() && <div><LandingPage auth={this.props.auth}/></div>}
       </div>
     );
   }
