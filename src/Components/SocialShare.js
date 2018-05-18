@@ -23,6 +23,8 @@ export class SocialShare extends React.Component {
 
     componentWillMount () {
         var that=this;
+        console.log('GOOOOO')
+        results = ""
         this.props.vAnalysis.forEach(function(candidate,index) { 
             results += candidate[1][1]+': '+(Math.floor((candidate[1][0]+that.props.rux)*100)/100).toString()+'%\n'
         })

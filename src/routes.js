@@ -9,6 +9,7 @@ import { Footer } from './Components/Footer'
 
 const auth = new Auth();
 
+
 const handleAuthentication = ({location}) => {
   if (/access_token|id_token|error/.test(location.hash)) {
     auth.handleAuthentication();
@@ -21,7 +22,7 @@ export const makeMainRoutes = () => {
         <div>
           {/* <Route path="/" render={(props) => <div style={{backgroundColor:'rgba(59,180,199,.3)'}}><App auth={auth} {...props} /><Home auth={auth} {...props} /></div>} /> */}
           <Route path="/" render={(props) => <div ><App auth={auth} {...props} /><Home auth={auth} {...props} /><br/><Footer/></div>} />
-          <Route path="/home" render={(props) => <Home auth={auth} {...props} />} />
+          {/* <Route path="/home" render={(props) => <Home auth={auth} {...props} />} /> */}
           <Route path="/callback" render={(props) => {
             handleAuthentication(props);
             return <Callback {...props} /> 

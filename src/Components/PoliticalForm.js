@@ -112,10 +112,23 @@ export class PoliticalForm extends React.Component {
         this.changeFavoriteCandidate = this.changeFavoriteCandidate.bind(this);
       }
 
+    saveAnswers () {
+        this.setState({ profile: {} });
+        const { userProfile, getProfile } = this.props.auth;
+
+        if (!userProfile) {
+          getProfile((err, profile) => {
+            this.setState({ profile });
+          }, this.state.answers, this.state.ratings, this.state.favoriteCandidate);
+        } else {
+          this.setState({ profile: userProfile });
+        }
+    }
+
     fillVector () {
         // An aid to quickly fill up the answers
         console.log('You ROGUE!');
-        this.setState({answers: [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,]})
+        this.setState({answers: [5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,]})
     }
     
     computeResults () {
@@ -180,8 +193,8 @@ export class PoliticalForm extends React.Component {
         // If answers contains no 0s, the compute the results.
         // Else, show the error message
         if (this.state.answers.find(answer => answer === 0) === undefined && this.state.favoriteCandidate!==null) {
+            this.saveAnswers();
             this.computeResults();
-            console.log(this.props);
         } else {
             this.setState({showErrorMessage: true, readyToComputeResults: false});
         }
@@ -207,7 +220,7 @@ export class PoliticalForm extends React.Component {
 
     changeFavoriteCandidate (e) {
         // When the user chooses their favorite candidate, the state is set to change the favoriteCandidate key
-        console.log(e)
+        console.log('The user chose the candidate number: ',e)
         const candidatesList = [null, 'Andres Manuel Lopez Obrador', 'Jaime Rodriguez', 'Jose Antonio Meade', 'Margarita Zavala', 'Ricardo Anaya',]
         this.setState(prevState => {
             return ({favoriteCandidate: candidatesList[e]})

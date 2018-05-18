@@ -1,23 +1,27 @@
-import history from '../history';
 import auth0 from 'auth0-js';
 import { AUTH_CONFIG } from './auth0-variables';
+import history from '../history';
 
 export default class Auth {
   auth0 = new auth0.WebAuth({
-    language: 'es',
     domain: AUTH_CONFIG.domain,
     clientID: AUTH_CONFIG.clientId,
     redirectUri: AUTH_CONFIG.callbackUrl,
-    audience: `https://${AUTH_CONFIG.domain}/userinfo`,
+    audience: `https://mivoto.auth0.com/api/v2/`, //audience: `https://${AUTH_CONFIG.domain}/userinfo `,
     responseType: 'token id_token',
-    scope: 'openid'
+    scope: 'openid profile update:users_app_metadata update:users update:current_user_metadata'
   });
+
+  userProfile;
 
   constructor() {
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
     this.handleAuthentication = this.handleAuthentication.bind(this);
     this.isAuthenticated = this.isAuthenticated.bind(this);
+    this.getAccessToken = this.getAccessToken.bind(this);
+    this.getProfile = this.getProfile.bind(this);
+    // this.patchUser = this.patchUser.bind(this);
   }
 
   login() {
@@ -28,9 +32,9 @@ export default class Auth {
     this.auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
         this.setSession(authResult);
-        history.replace('/');
+        history.replace('/home');
       } else if (err) {
-        history.replace('/');
+        history.replace('/home');
         console.log(err);
         alert(`Error: ${err.error}. Check the console for further details.`);
       }
@@ -39,12 +43,39 @@ export default class Auth {
 
   setSession(authResult) {
     // Set the time that the access token will expire at
-    let expiresAt = JSON.stringify((authResult.expiresIn * 1000) + new Date().getTime());
+    let expiresAt = JSON.stringify(
+      authResult.expiresIn * 1000 + new Date().getTime()
+    );
     localStorage.setItem('access_token', authResult.accessToken);
     localStorage.setItem('id_token', authResult.idToken);
     localStorage.setItem('expires_at', expiresAt);
-    // navigate to the / route
-    history.replace('/');
+    // navigate to the home route
+    history.replace('/home');
+  }
+
+  getAccessToken() {
+    const accessToken = localStorage.getItem('access_token');
+    if (!accessToken) {
+      throw new Error('No access token found');
+    }
+    return accessToken;
+  }
+
+  getProfile(cb, userAnswers, userRatings, userFavoriteCandidate) {
+    let accessToken = this.getAccessToken();
+
+    var auth0Manage = new auth0.Management({
+      domain: 'mivoto.auth0.com',
+      token: accessToken
+    });
+
+    this.auth0.client.userInfo(accessToken, (err, profile) => {
+      if (profile) {
+        this.userProfile = profile;
+        auth0Manage.patchUserMetadata(profile.sub, {answers:userAnswers, ratings:userRatings, favoriteCandidate:userFavoriteCandidate}, cb);
+      }
+      cb(err, profile);
+    });
   }
 
   logout() {
@@ -52,8 +83,9 @@ export default class Auth {
     localStorage.removeItem('access_token');
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
-    // navigate to the / route
-    history.replace('/');
+    this.userProfile = null;
+    // navigate to the home route
+    history.replace('/home');
   }
 
   isAuthenticated() {
