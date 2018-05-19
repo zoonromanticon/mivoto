@@ -9,7 +9,6 @@
     "auth0-js": "^9.5.1",
     "axios": "^0.18.0",
     "bootstrap": "^3.3.7",
-    "chart.js": "^2.7.2",
     "prop-types": "^15.6.1",
     "react": "^15.5.4",
     "react-axios": "^2.0.0",
