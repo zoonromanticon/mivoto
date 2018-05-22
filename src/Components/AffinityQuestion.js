@@ -28,11 +28,10 @@ export class AffinityQuestion extends React.Component {
                 value={this.state.value}
                 onChange={this.handleChange}
             >
-                <ToggleButton className="grow" bsSize="large" style={{color:'white', fontFamily:'monospace', fontSize:'160%'}} bsStyle="info" value={1}> Andres Manuel López Obrador</ToggleButton>
-                <ToggleButton className="grow" bsSize="large" style={{color:'white', fontFamily:'monospace', fontSize:'160%'}} bsStyle="warning" value={2}> Jaime Rodríguez "El Bronco"</ToggleButton>
-                <ToggleButton className="grow" bsSize="large" style={{color:'white', fontFamily:'monospace', fontSize:'160%'}} bsStyle="primary" value={3}> José Antonio Meade</ToggleButton>
-                <ToggleButton className="grow" bsSize="large" style={{color:'white', fontFamily:'monospace', fontSize:'160%'}} bsStyle="success" value={4}> Margarita Zavala</ToggleButton>
-                <ToggleButton className="grow" bsSize="large" style={{color:'white', fontFamily:'monospace', fontSize:'160%'}} bsStyle="danger" value={5}> Ricardo Anaya</ToggleButton>
+                <ToggleButton className="grow" bsSize="large" style={{backgroundColor:'rgba(176,35,42,1)', color:'white', fontFamily:'monospace', fontSize:'130%'}} bsStyle="info" value={1}> Andres Manuel López Obrador</ToggleButton>
+                <ToggleButton className="grow" bsSize="large" style={{color:'white', fontFamily:'monospace', fontSize:'130%'}} bsStyle="info" value={2}> Jaime Rodríguez "El Bronco"</ToggleButton>
+                <ToggleButton className="grow" bsSize="large" style={{color:'white', fontFamily:'monospace', fontSize:'130%'}} bsStyle="danger" value={3}> José Antonio Meade</ToggleButton>
+                <ToggleButton className="grow" bsSize="large" style={{color:'white', fontFamily:'monospace', fontSize:'130%'}} bsStyle="primary" value={4}> Ricardo Anaya</ToggleButton>
                 {/* <h3>{this.state.value}</h3> */}
             </ToggleButtonGroup>
           </div>

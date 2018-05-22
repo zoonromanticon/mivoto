@@ -8,35 +8,66 @@ import {
     TwitterIcon,
     WhatsappIcon,
   } from 'react-share';
+import {QuestionsToCandidates} from './QuestionsToCandidates';
 
 const shareUrl = "https://mivoto.surge.sh"
 const title = "Estos son mis resultados de afinidad frente a candidatos:\n"
 var results = ""
+var highestAffinityHashTag = '';
+var lowestAffinityHashTag = '';
+var highestAffinityQuestion = '';
+var lowestAffinityQuestion = '';
+var candidatesSocialMediaInfo = {
+    'Andres Manuel Lopez Obrador': {'hashtag':'lopezobrador_', 'questions': {'highestAffinity':['Usted, dependiendo del foro, suele decirle a su público lo que quiere oír, generando confusión. ¿Cómo podemos confiar en lo que dice si no sabemos lo que piensa realmente?','Usted ha dicho que respetará las decisiones del Congreso. ¿Lo hará incluso si ese Congreso, donde habrá actores que pertenecen a la “mafia del poder”, decide en contra de la cuarta gran transformación del país que usted promete?'],'lowestAffinity':['Usted lleva más de 40 años en la política, ha militado en tres partidos y está rodeado de personajes que representan los vicios del “sistema”. ¿Por qué habríamos de creer que usted es una verdadera alternativa?', 'Usted promete un cambio radical con respecto al estado actual de las cosas. ¿Qué nos garantiza que ese cambio no significaría un retroceso a modelos desastrosos que el país ya ha vivido?']}},
+    'Ricardo Anaya': {'hashtag':'RicardoAnayaC', 'questions': {'highestAffinity':['En la competencia por su candidatura, su partido se dividió. ¿Puede asegurarnos que, durante su administración, no pasará lo mismo con su coalición, y se quedará sin la capacidad de gobernar efectivamente?','Usted, a su corta edad, ha vivido y estudiado en el extranjero y habla varios idiomas. ¿Qué le respondería a quienes dicen que le sobra mundo y le falta México?'],'lowestAffinity':['Mucha gente lo considera a usted una persona brillante y preparada, a la vez que maquiavélico y deshonesto. ¿Qué nos garantiza que gobernaría México el primero y no el segundo?']}},
+    'Jose Antonio Meade': {'hashtag':'JoseAMeadeK', 'questions': {'highestAffinity':['Usted ha prometido combatir la corrupción. Además, usted es candidato de un partido que castiga la deslealtad antes que la corrupción. ¿Está dispuesto a mantener su promesa, pase lo que pase y cueste lo que cueste?','A veces, usted parece distanciarse del Presidente @EPN y, otras, representar la continuidad. No se pueden las dos. Si éste ha sido un buen sexenio en general, ¿por qué no se acepta como el candidato de la continuidad y ya?'],'lowestAffinity':['Usted representa algunas de las mejores prácticas de manejo de la economía y administración pública. ¿Por qué su gobierno no representaría también los resultados de profunda desigualdad y pobreza de ese modelo?']}},
+    'Jaime Rodriguez': {'hashtag':'JaimeRdzNL', 'questions': {'highestAffinity':['Usted, como candidato independiente, no tiene el apoyo de ningún partido. ¿Cómo podría gobernar como independiente, es decir, sin la estructura de ningún partido apoyo?'],'lowestAffinity':['Usted ha demostrado tener una fuerte personalidad y carácter pintoresco, pero no queda claro qué más tiene que ofrecer. ¿Por qué los votantes habríamos de tomarlo en serio?']}},
+  }
 
 export class SocialShare extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             results: '',
+            highestAffinityHashTag: '',
+            lowestAffinityHashTag: '',
+            highestAffinityQuestion: '',
+            lowestAffinityQuestion: '',
         }; 
     }
 
     componentWillMount () {
         var that=this;
         results = ""
-        this.props.vAnalysis.forEach(function(candidate,index) { 
+        this.props.vAnalysis.forEach(function(candidate,index) {
+            if (index === 0) {highestAffinityHashTag = candidatesSocialMediaInfo[candidate[0]]['hashtag']; highestAffinityQuestion = candidatesSocialMediaInfo[candidate[0]]['questions']['highestAffinity'][0]}
+            if (index === 3) {lowestAffinityHashTag = candidatesSocialMediaInfo[candidate[0]]['hashtag']; lowestAffinityQuestion = candidatesSocialMediaInfo[candidate[0]]['questions']['lowestAffinity'][0]} 
             results += candidate[1][1]+': '+(Math.floor((candidate[1][0]+that.props.rux)*100)/100).toString()+'%\n'
         })
-        this.setState({results:title+results+'\n'})
+        this.setState({
+            results:title+results+'\n',
+            highestAffinityHashTag: highestAffinityHashTag,
+            lowestAffinityHashTag: lowestAffinityHashTag,
+            highestAffinityQuestion: highestAffinityQuestion,
+            lowestAffinityQuestion: lowestAffinityQuestion,
+        })
     }
     
     render () {
         return (
             <div>
+            
+            <QuestionsToCandidates
+                lowestAffinityHashTag={this.state.lowestAffinityHashTag}
+                lowestAffinityQuestion={this.state.lowestAffinityQuestion} 
+                highestAffinityHashTag={this.state.highestAffinityHashTag}
+                highestAffinityQuestion={this.state.highestAffinityQuestion}
+                />
+
             <h3>Comparte tus resultados en:</h3>
             <Grid>
                 <Row className="shareButtonsContainer">
-                    <Col md={4} >
+                    <Col xs={4} sm={4} md={4} >
                         <FacebookShareButton
                             url={shareUrl}
                             quote={this.state.results}
@@ -46,7 +77,7 @@ export class SocialShare extends React.Component {
                             round />
                         </FacebookShareButton>
                     </Col>
-                    <Col md={4} >
+                    <Col xs={4} sm={4} md={4} >
                         <TwitterShareButton
                             url={shareUrl}
                             title={this.state.results}
@@ -56,7 +87,7 @@ export class SocialShare extends React.Component {
                             round />
                         </TwitterShareButton>
                     </Col>
-                    <Col md={4} >
+                    <Col xs={4} sm={4} md={4} >
                         <WhatsappShareButton
                             url={shareUrl}
                             separator=''

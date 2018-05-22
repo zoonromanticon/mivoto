@@ -1,6 +1,7 @@
 import React from 'react';
 import { Grid, Col, Row } from 'react-bootstrap';
-import {Home} from '../Home/Home';
+import { Home } from '../Home/Home';
+import { FAQ } from './FAQ';
 import { Image } from 'react-bootstrap';
 import idea from '../assets/idea.svg';
 import share from '../assets/share.svg';
@@ -36,13 +37,16 @@ export class LandingPage extends React.Component {
                                     <h2 className='pinkish'>¡Tenemos que cambiar esto!</h2>
 
                                     <span style={{fontSize:'140%'}}>
-                                        La buena noticia: hoy tenemos la herramienta para ver transparenta las intenciones y razones políticas de los votantes.
+                                    La buena noticia: hoy, por primera vez, puedes ver de manera clara y objetiva qué tanto responde cada candidato a lo que quieres y esperas para México.
                                     </span>
 
                                     <br/>
                                     <br/>
 
+                                    <div style={{margin: '0 auto', textAlign:'center',display: 'table'}}>
                                     <Home auth={this.props.auth} />
+                                    <FAQ/>
+                                    </div>
 
                                     <hr style={{borderColor:'black'}}/>
 

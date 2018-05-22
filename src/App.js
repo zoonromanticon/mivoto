@@ -27,14 +27,7 @@ class App extends Component {
             <Navbar.Brand>
               <a href="#">mivoto.io</a>
             </Navbar.Brand>
-            {/* <Button
-              bsStyle="success"
-              className="btn btn-outline-success btn-margin"
-              onClick={this.goTo.bind(this, '/')}
-            >
-              
-              Formulario
-            </Button> */}
+
             {
               !isAuthenticated() && (
                   <Button
@@ -72,6 +65,7 @@ class App extends Component {
                 <li>Versión alpha 0.1: “MVP Release”. 09/05/18. Cuestionario funcional, resultados porcentuales y compartir en redes sociales</li>
                 <li>Update alpha 0.2: 13/05/18. Mejora a errores en el cuestionario, se corrigió un problema que no permitía registrarse a algunos usuarios</li>
                 <li>Update alpha 0.3: 17/05/18. Se añadió landing page, se añadió resultado de mayor y menor afinidad por candidato</li>
+                <li>Update alpha 0.4: 19/05/18. Se añadió la opción de preguntar a los candidatos preguntas recomendadas para el debate ciudadano el próximo 21 de junio; se corrigieron bugs</li>
               </ul>
             </ReactTooltip>
             </Navbar.Header>

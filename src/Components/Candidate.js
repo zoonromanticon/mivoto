@@ -13,16 +13,17 @@ export class Candidate extends React.Component {
         return (
             <Grid className="growDark">
             <br/>
-            <Row className="show-grid">
+            <Row className="show-grid" style={{verticalAlign: 'center !important'}}>
                 <Col md={4} >
                     <div style={{height: 'auto', width: 'auto' }}>
-                        <ResponsiveEmbed a4by3 className="picture grow">
+                        <ResponsiveEmbed a4by3 className="picture">
                             <embed type="image/jpg" src={this.props.pic} />
                         </ResponsiveEmbed>
                     </div>
                 </Col>
-                <Col md={1} >
+                <Col md={2} >
                     <div style={{
+                      textAlign: 'center !important',
                       display: 'flex !important',
                       alignItems: 'center !important',
                       backgroundColor: 'blue !important',
@@ -30,17 +31,17 @@ export class Candidate extends React.Component {
                         <h1>{Math.floor( (this.props.affinity+this.props.rux) * 100) / 100}%</h1>
                     </div>
                 </Col>
-                <Col md={5}>
+                <Col md={6}>
                     <div className="description" style={{height: 'auto', width: 'auto' }}>
-                        <h4>{this.props.name}</h4>
-                        <h5>{this.props.party}</h5>
-                        <h5>Tu mayor afinidad es: </h5><h5 style={{fontWeight: 'bold'}}>{this.props.categoryOfMaxAffinity}</h5>
-                        <h5>Tu menor afinidad es: </h5><h5 style={{fontWeight: 'bold'}}>{this.props.categoryOfMinAffinity}</h5>
+                        <h3>{this.props.name}</h3>
+                        <h4>{this.props.party}</h4>
+                        <h4>Tu mayor afinidad es: </h4><h4 style={{fontWeight: 'bold'}}>{this.props.categoryOfMaxAffinity}</h4>
+                        <h4>Tu menor afinidad es: </h4><h4 style={{fontWeight: 'bold'}}>{this.props.categoryOfMinAffinity}</h4>
                     </div>
                 </Col>
-                <Col md={2}>
+                {/* <Col md={2}>
                     ELECCIÓN
-                </Col>
+                </Col> */}
             </Row>
             <br/>
             </Grid>

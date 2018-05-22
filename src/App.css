@@ -38,6 +38,16 @@
   opacity: 0.75;
 }
 
+.shareSquareButton {
+  cursor: pointer;
+}
+
+.shareSquareButton:hover:not(:active) {
+  opacity: 0.75;
+  /* border-style: dotted solid dashed double; */
+  /* border-color: 'white' */
+}
+
 .shareButtonsContainer {
   vertical-align: top;
   display: inline-block;

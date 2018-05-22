@@ -3,12 +3,12 @@ import {Candidate} from './Candidate';
 import {SocialShare} from './SocialShare';
 
 export class Results extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            tst: false,
-        };
-      }
+    // constructor(props) {
+    //     super(props);
+    //     this.state = {
+    //         tst: false,
+    //     };
+    //   }
 
     componentWillMount() {
         console.log("8v Analysis results: ",this.props.vAnalysis, "Total Rux: ", this.props.rux)

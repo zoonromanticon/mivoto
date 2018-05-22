@@ -1,3 +1,7 @@
+// routes.js defines a component that acts as the app's router. It handles auth's callback redirect.
+// On '/' a route is defined to trigger a view composed of App, Home (which acts as the body of the app)
+// and Footer
+
 import React from 'react';
 import { Route, Router } from 'react-router-dom';
 import App from './App';
@@ -20,9 +24,7 @@ export const makeMainRoutes = () => {
   return (
       <Router history={history}>
         <div>
-          {/* <Route path="/" render={(props) => <div style={{backgroundColor:'rgba(59,180,199,.3)'}}><App auth={auth} {...props} /><Home auth={auth} {...props} /></div>} /> */}
           <Route path="/" render={(props) => <div ><App auth={auth} {...props} /><Home auth={auth} {...props} /><br/><Footer/></div>} />
-          {/* <Route path="/home" render={(props) => <Home auth={auth} {...props} />} /> */}
           <Route path="/callback" render={(props) => {
             handleAuthentication(props);
             return <Callback {...props} /> 

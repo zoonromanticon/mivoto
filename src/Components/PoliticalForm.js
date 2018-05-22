@@ -128,7 +128,7 @@ export class PoliticalForm extends React.Component {
     fillVector () {
         // An aid to quickly fill up the answers
         console.log('You ROGUE!');
-        this.setState({answers: [1,4,5,1,1,1,1,2,2,1,3,5,1,1,1,5,2,1,1,5,2,4,1,5,4,5,5,4,4,1,4,4,2,2,1,1,4,3,4,1,]})
+        this.setState({answers: [1,2,1,1,5,2,5,5,2,2,4,5,2,5,4,1,1,2,5,4,1,2,2,5,2,1,1,2,2,1,2,2,1,1,5,5,1,4,4,5,]})
     }
     
     computeResults () {
@@ -221,7 +221,7 @@ export class PoliticalForm extends React.Component {
     changeFavoriteCandidate (e) {
         // When the user chooses their favorite candidate, the state is set to change the favoriteCandidate key
         console.log('The user chose the candidate number: ',e)
-        const candidatesList = [null, 'Andres Manuel Lopez Obrador', 'Jaime Rodriguez', 'Jose Antonio Meade', 'Margarita Zavala', 'Ricardo Anaya',]
+        const candidatesList = [null, 'Andres Manuel Lopez Obrador', 'Jaime Rodriguez', 'Jose Antonio Meade', 'Ricardo Anaya',]
         this.setState(prevState => {
             return ({favoriteCandidate: candidatesList[e]})
         });
@@ -274,7 +274,7 @@ export class PoliticalForm extends React.Component {
                 </Get>
                 
                 {/* A very useful button when testing the app. Press to fill up the answers vector */}
-                <Button className="submit grow" onClick={this.fillVector} bsSize="large" bsStyle="danger">Trampa</Button>
+                {/* <Button className="submit grow" onClick={this.fillVector} bsSize="large" bsStyle="danger">Trampa</Button> */}
 
                 {/* Gee. No time for finding the footer! Come back here when you have enough time!!! */}
                 {/* <Footer/> */}
