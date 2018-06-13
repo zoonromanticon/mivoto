@@ -1,3 +1,7 @@
+// The FAQ component is a simple modal element that is triggered by a button
+// We use it to exhibit more information regarding the app and users can access it
+// through the landing page's "Más información" button
+
 import React from 'react';
 import { Button, Modal } from 'react-bootstrap';
 

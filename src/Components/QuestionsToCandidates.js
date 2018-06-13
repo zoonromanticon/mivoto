@@ -1,3 +1,7 @@
+// QuestionToCandidates renders the optional questions to the candidates, with corresponding
+// tweet buttons. The via part of the tweet actually comes from shareUrl, which is automatically 
+// postpended to the tweet
+
 import React from 'react';
 import {
     TwitterShareButton,
@@ -5,7 +9,6 @@ import {
 } from 'react-share';
 
 const shareUrl = "mivoto.surge.sh" //Doesn't show up because it lacks the https:// NICE WAY TO HIDE THE URL FOR TWITTER! 
-// const via = "mivoto.surge.sh"
 
 export class QuestionsToCandidates extends React.Component {
     
@@ -20,8 +23,6 @@ export class QuestionsToCandidates extends React.Component {
                     <TwitterShareButton
                     style={{width: '60px', margin:'auto', paddingBottom:'2%'}}
                     url={shareUrl}
-                    // via={via}
-                    // hashtags={['DebatesCiudadanos']}
                     title={`.@${this.props.highestAffinityHashTag} ${this.props.highestAffinityQuestion} #DebatesCiudadanos via:`}
                     className="shareSquareButton">
                     <TwitterIcon
@@ -36,9 +37,6 @@ export class QuestionsToCandidates extends React.Component {
                     <TwitterShareButton
                     style={{width: '60px', margin:'auto', paddingBottom:'2%'}}
                     url={shareUrl}
-                    // via={via}
-                    // hashtags={['DebatesCiudadanos']}
-                    // title={'.@'+this.props.lowestAffinityHashTag+' '+this.props.lowestAffinityQuestion+' '+' #DebatesCiudadanos'+' via: '+via}
                     title={`.@${this.props.lowestAffinityHashTag} ${this.props.lowestAffinityQuestion} #DebatesCiudadanos via:`}
                     className="shareSquareButton">
                     <TwitterIcon

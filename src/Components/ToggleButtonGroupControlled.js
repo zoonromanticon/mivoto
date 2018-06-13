@@ -1,3 +1,6 @@
+// ToggleButtonGroupControlled exposes the five buttons the user selects from for each question
+// The value of each instance is controlled directly from PoliticalForm, by means of handler function calls
+
 import React from 'react';
 import {ToggleButton, ToggleButtonGroup } from 'react-bootstrap';
 import '../App.css';
@@ -5,7 +8,6 @@ import '../App.css';
 export class ToggleButtonGroupControlled extends React.Component {
     constructor(props, context) {
       super(props, context);
-  
       this.handleChange = this.handleChange.bind(this);
   
       this.state = {

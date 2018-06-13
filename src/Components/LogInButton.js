@@ -1,15 +1,17 @@
+// LogInButton if the user hasn't authenticated, renders a button that if clicked calls the login auth0 function.
+// If authenticated, PoliticalForm is rendered, which is very much the backbone of the whole project's data flow 
+
 import React, { Component } from 'react';
 import {PoliticalForm} from '../Components/PoliticalForm';
 import { Button } from 'react-bootstrap';
 
-export class Home extends Component {
+export class LogInButton extends Component {
   login() {
     this.props.auth.login();
   }
   render() {
     const { isAuthenticated } = this.props.auth;
-    // console.log(this.props);
-    //PlwO340192834
+
     return (
       <div style={{padding:'0%',}} className="container">
         {
@@ -40,4 +42,4 @@ export class Home extends Component {
   }
 }
 
-export default Home;
+export default LogInButton;

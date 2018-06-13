@@ -1,12 +1,14 @@
+// LandingPage is a very HTMLy component. It basically just renders the landing page
+// Only thing to mention is LogInButton makes use of the auth prop so it must be passed down to it
+
 import React from 'react';
 import { Grid, Col, Row } from 'react-bootstrap';
-import { Home } from '../Home/Home';
+import { LogInButton } from './LogInButton';
 import { FAQ } from './FAQ';
 import { Image } from 'react-bootstrap';
 import idea from '../assets/idea.svg';
 import share from '../assets/share.svg';
 import talk from '../assets/talk.svg';
-
 
 export class LandingPage extends React.Component {
     render () {
@@ -44,7 +46,7 @@ export class LandingPage extends React.Component {
                                     <br/>
 
                                     <div style={{margin: '0 auto', textAlign:'center',display: 'table'}}>
-                                    <Home auth={this.props.auth} />
+                                    <LogInButton auth={this.props.auth} />
                                     <FAQ/>
                                     </div>
 
@@ -53,7 +55,7 @@ export class LandingPage extends React.Component {
                                     <h2 style={{textAlign:'center'}} className='bluesh'>¿Cómo funciona?</h2>
 
                                     <br/>
-                                   
+                                     
                                     <div className="tableContainer">
                                         <div className="left">
                                             <h2 style={{textAlign:'center', fontSize:'150%', fontWeight:'bold'}}>Descubre</h2>
@@ -74,10 +76,10 @@ export class LandingPage extends React.Component {
 
                                     <hr style={{borderColor:'black'}}/>
 
-                                    <Home auth={this.props.auth} />
+                                    <LogInButton auth={this.props.auth} />
 
                                     <br/>
-
+                                    
                                     <span style={{fontSize:'140%'}}>
                                         <span style={{fontWeight:'bold'}}>La pregunta del millón: ¿por qué piden que me registre? </span>
                                         La respuesta: mivoto.io es más que un cuestionario. Queremos que sea tu espacio. El registro nos ayuda a darte la mejor experiencia, a reducir el riesgo de bots y cosas peores y, lo más importante, a construir contigo el futuro del análisis y la participación democrática del país. No te preocupes: <span  style={{fontWeight:'bold'}}>sabemos que odias el spam y a los

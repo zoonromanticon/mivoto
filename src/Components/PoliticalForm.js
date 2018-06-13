@@ -8,6 +8,9 @@ import {FormQuestions} from './FormQuestions';
 import { Button } from 'react-bootstrap';
 const Loading = require('react-loading-animation');
 
+// algorithmData holds the information regarding each of the 40 statements, including
+// their meaning in terms of numerical values for each possible choice (strongly agree to strongly disagree)
+// and also numerical values for each of the three possible ratings (1 to 3 stars)
 const algorithmData = {
 	"Economía Familiar y General": {
         "ratingsMeanings": [0,0.0045,0.0091,0.0137],
@@ -274,7 +277,7 @@ export class PoliticalForm extends React.Component {
                 </Get>
                 
                 {/* A very useful button when testing the app. Press to fill up the answers vector */}
-                {/* <Button className="submit grow" onClick={this.fillVector} bsSize="large" bsStyle="danger">Trampa</Button> */}
+                <Button className="submit grow" onClick={this.fillVector} bsSize="large" bsStyle="danger">Trampa</Button>
 
                 {/* Gee. No time for finding the footer! Come back here when you have enough time!!! */}
                 {/* <Footer/> */}
